@@ -8,6 +8,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/fatih/color"
 	"github.com/joho/godotenv"
 )
 
@@ -57,9 +58,11 @@ func main() {
 	expectedToSolve := (getNumberOfDays(startDate) * 3) + startQuestions
 
 	if expectedToSolve > curSolved {
-		fmt.Printf("You are behind by %d questions!!", expectedToSolve-curSolved)
+		status := fmt.Sprintf("You are behind by %d questions!!", expectedToSolve-curSolved)
+		color.Red(status)
 	} else if expectedToSolve < curSolved {
-		fmt.Printf("Keep up the good work")
+		status := fmt.Sprintf("Keep up the good work")
+		color.Green(status)
 	} else {
 		fmt.Printf("NOt BAd NOT GOod")
 	}
